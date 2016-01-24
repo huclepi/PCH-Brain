@@ -51,11 +51,11 @@ namespace PCHBrain
                 {
                     case "la fête du jour":
                         text = String.Format("Aujourd'hui, c'est la fête des {0}",this.Fete.DynamicValue.Value);
-                        PackageHost.WriteInfo("Fête du jour: {0}", this.Fete.DynamicValue);
+                        //PackageHost.WriteInfo("Fête du jour: {0}", this.Fete.DynamicValue);
                         break;
                     case "la température du GPU":
                         text = String.Format("La température de votre carte graphique est de {0} °C",this.GPU.DynamicValue.Value);
-                        PackageHost.WriteInfo("Température du GPU: {0}°C ({1}", this.GPU.DynamicValue.Value,text);
+                        //PackageHost.WriteInfo("Température du GPU: {0}°C ({1}", this.GPU.DynamicValue.Value,text);
                         break;
                     default:
                         break;
