@@ -2,10 +2,10 @@
 <Package xmlns="urn:Constellation.Deployment"
          Name="PCHBrain"
          Version="1.0"
-         Author="Pierre Defache"
+         Author="Huclepi"
          URL="http://www.mywebsite.com"
          Description="PCHBrain Copyright ©  2016"
-         EnableControlHub="false">
+         EnableControlHub="true">
   <Compatibility constellationVersion="1.7" dotNetTargetPlatform="net45" />
   <Settings>
 	<!-- My package settings --> 
