@@ -19,6 +19,9 @@ namespace PCHBrain
         [StateObjectLink("DayInfo", "NameDay")]
         public StateObjectNotifier Fete { get; set; }
 
+        [StateObjectLink("BatteryChecker","7EAC20FAA976CD84DE5ADE97A2501658909BDE44")]
+        public StateObjectNotifier Battery { get; set; }
+
         static void Main(string[] args)
         {
             PackageHost.Start<Program>(args);
@@ -50,12 +53,22 @@ namespace PCHBrain
                 switch ((string)obj.SemanticValue["data_type"])
                 {
                     case "la fête du jour":
-                        text = String.Format("Aujourd'hui, c'est la fête des {0}",this.Fete.DynamicValue.Value);
-                        //PackageHost.WriteInfo("Fête du jour: {0}", this.Fete.DynamicValue);
+                        text = String.Format("Aujourd'hui, c'est la fête des {0}",this.Fete.DynamicValue);
                         break;
                     case "la température du GPU":
                         text = String.Format("La température de votre carte graphique est de {0} °C",this.GPU.DynamicValue.Value);
-                        //PackageHost.WriteInfo("Température du GPU: {0}°C ({1}", this.GPU.DynamicValue.Value,text);
+                        break;
+                    case "le pourcentage de ma batterie":
+                        int value = Battery.DynamicValue.EstimatedChargeRemaining;
+                        PackageHost.WriteInfo("{0}", value);
+                        if (value < 50)
+                        {
+                            text = String.Format("Il vous reste {0}% de batterie.",value);
+                        }
+                        else
+                        {
+                            text = String.Format("Votre batterie est chargée à {0}%.", value);
+                        }
                         break;
                     default:
                         break;
