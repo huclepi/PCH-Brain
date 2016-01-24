@@ -40,6 +40,8 @@ namespace PCHBrain
         [MessageCallback(IsHidden = true)]
         public void SpeechReceive(Object response)
         {
+            string text = "";
+
             Response obj = JsonConvert.DeserializeObject<Response>(response.ToString());
             String semanticValue = (string)obj.SemanticValue["constellation"];
 
@@ -48,14 +50,21 @@ namespace PCHBrain
                 switch ((string)obj.SemanticValue["data_type"])
                 {
                     case "la fête du jour":
+                        text = String.Format("Aujourd'hui, c'est la fête des {0}",this.Fete.DynamicValue.Value);
                         PackageHost.WriteInfo("Fête du jour: {0}", this.Fete.DynamicValue);
                         break;
                     case "la température du GPU":
-                        PackageHost.WriteInfo("Température du GPU: {0}°C", this.GPU.DynamicValue.Value);
+                        text = String.Format("La température de votre carte graphique est de {0} °C",this.GPU.DynamicValue.Value);
+                        PackageHost.WriteInfo("Température du GPU: {0}°C ({1}", this.GPU.DynamicValue.Value,text);
                         break;
                     default:
                         break;
                 }
+            }
+
+            if (text != "")
+            {
+                PackageHost.CreateScope("Jarvis").Proxy.Speak(text);
             }
         }
     }
