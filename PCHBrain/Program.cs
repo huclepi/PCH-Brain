@@ -81,10 +81,15 @@ namespace PCHBrain
                     case "mon PC":
                     case "mon ordinateur":
                         PackageHost.CreateScope("WindowsControl").Proxy.LockWorkStation();
+                        PackageHost.CreateScope("Jarvis").Proxy.Speak("C'est fait.");
                         break;
                     default:
                         break;
                 }
+            }
+            else if (semanticValue == "None")
+            {
+                text = "D'accord.";
             }
 
             if (text != "")
