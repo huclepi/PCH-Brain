@@ -74,6 +74,18 @@ namespace PCHBrain
                         break;
                 }
             }
+            else if (semanticValue == "Lock")
+            {
+                switch((string)obj.SemanticValue["data_lock"])
+                {
+                    case "mon PC":
+                    case "mon ordinateur":
+                        PackageHost.CreateScope("WindowsControl").Proxy.LockWorkStation();
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             if (text != "")
             {
