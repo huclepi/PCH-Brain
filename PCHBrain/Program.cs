@@ -40,11 +40,11 @@ namespace PCHBrain
 
             PackageHost.ControlManager.RegisterStateObjectLinks(this);
 
-            PackageHost.AddToGroup("JackySpeech");
+            PackageHost.AddToGroup("JarvisSpeech");
         }
 
         [MessageCallback(IsHidden = true)]
-        public void SpeechReceive(Object response)
+        public void SpeechReceive(object response)
         {
             string text = "";
 

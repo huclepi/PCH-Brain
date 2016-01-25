@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Package xmlns="urn:Constellation.Deployment"
          Name="PCHBrain"
-         Version="1.1"
+         Version="1.2"
          Author="Huclepi"
          URL="http://www.mywebsite.com"
          Description="PCHBrain Copyright ©  2016"
