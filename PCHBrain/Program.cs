@@ -19,6 +19,9 @@ namespace PCHBrain
         [StateObjectLink("DayInfo", "NameDay")]
         public StateObjectNotifier Fete { get; set; }
 
+        [StateObjectLink("DayInfo", "SunInfo")]
+        public StateObjectNotifier Sun { get; set; }
+
         [StateObjectLink("BatteryChecker","7EAC20FAA976CD84DE5ADE97A2501658909BDE44")]
         public StateObjectNotifier Battery { get; set; }
 
@@ -81,9 +84,21 @@ namespace PCHBrain
                     case "mon PC":
                     case "mon ordinateur":
                         PackageHost.CreateScope("WindowsControl").Proxy.LockWorkStation();
-                        PackageHost.CreateScope("Jarvis").Proxy.Speak("C'est fait.");
+                        text = "C'est verrouillé.";
                         break;
                     default:
+                        break;
+                }
+            }
+            else if (semanticValue == "Time")
+            {
+                switch ((string)obj.SemanticValue["data_time"])
+                {
+                    case "se couche le soleil":
+                        text = String.Format("Le soleil se couchera à {0}", Sun.DynamicValue.Sunset.Value);
+                        break;
+                    case "se lève le soleil":
+                        text = String.Format("Le soleil s'est levé à {0}", Sun.DynamicValue.Sunrise.Value);
                         break;
                 }
             }
