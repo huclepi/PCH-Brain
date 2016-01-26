@@ -106,6 +106,14 @@ namespace PCHBrain
             {
                 text = "D'accord.";
             }
+            else if (semanticValue == "Prepare")
+            {
+                text = "Je pense que ça va au-delà de mes compétences pour le moment. Mais, il vous suffit d'appuyer sur le bouton de la cafetière.";
+            }
+            else if (semanticValue == "Do")
+            {
+                text = "";
+            }
 
             if (text != "")
             {
