@@ -110,9 +110,13 @@ namespace PCHBrain
             {
                 text = "Je pense que ça va au-delà de mes compétences pour le moment. Mais, il vous suffit d'appuyer sur le bouton de la cafetière.";
             }
-            else if (semanticValue == "Do")
+            else if (semanticValue == "End")
             {
-                text = "";
+                text = "Merci de nous avoir écoutés. Et le café est prêt.";
+            }
+            else if (semanticValue == "Sing")
+            {
+                text = "Une souris vert, qui courait dans l'herbe, je l'attrape par la queue, je la montre à ces messieurs. Ces messieurs me disent : Trempez-la dans l'huile, trempez-la dans l'eau, ça fera un escargot tout chaud.";
             }
 
             if (text != "")
