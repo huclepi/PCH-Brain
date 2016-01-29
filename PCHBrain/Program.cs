@@ -12,16 +12,27 @@ namespace PCHBrain
 {
     public class Program : PackageBase
     {
-
+        /// <summary>
+        /// GPU temperature
+        /// </summary>
         [StateObjectLink("HWMonitor", "/nvidiagpu/0/temperature/0")]
         public StateObjectNotifier GPU { get; set; }
 
+        /// <summary>
+        /// Name day
+        /// </summary>
         [StateObjectLink("DayInfo", "NameDay")]
         public StateObjectNotifier Fete { get; set; }
 
+        /// <summary>
+        /// Informations about the sun
+        /// </summary>
         [StateObjectLink("DayInfo", "SunInfo")]
         public StateObjectNotifier Sun { get; set; }
 
+        /// <summary>
+        /// Information about the % of the battery
+        /// </summary>
         [StateObjectLink("BatteryChecker","7EAC20FAA976CD84DE5ADE97A2501658909BDE44")]
         public StateObjectNotifier Battery { get; set; }
 
@@ -39,10 +50,15 @@ namespace PCHBrain
             }
 
             PackageHost.ControlManager.RegisterStateObjectLinks(this);
-
+            
+            // Adding our AI into the group which receive the information about the SpeechRecognition.
             PackageHost.AddToGroup("JarvisSpeech");
         }
 
+        /// <summary>
+        /// Response handler
+        /// </summary>
+        /// <param name="response">Response of the SpeechRecognition</param>
         [MessageCallback(IsHidden = true)]
         public void SpeechReceive(object response)
         {

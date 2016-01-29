@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" tag-format="semantics-ms/1.0"
+root="constellation" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="constellation" scope="public">
+    <ruleref special="GARBAGE" />
+    <one-of>
+      <item>
+        <one-of>
+          <item>Donne moi</item>
+          <item>Quelle est</item>
+        </one-of>
+        <ruleref uri="#data_type" />
+        <tag>$.data_type=$data_type; $.constellation={}; $.constellation._value="Get";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>A quelle heure</item>
+        </one-of>
+        <ruleref uri="#data_time" />
+        <tag>$.data_time=$data_time; $.constellation={}; $.constellation._value="Time";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>Verrouille</item>
+        </one-of>
+        <ruleref uri="#data_lock" />
+        <tag>$.data_lock=$data_lock; $.constellation={}; $.constellation._value="Lock";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>Un dernier</item>
+        </one-of>
+        <ruleref uri="#data_end" />
+        <tag>$.data_end=$data_end; $.constellation={}; $.constellation._value="End";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>Prépare</item>
+          <item>Prépare moi</item>
+        </one-of>
+        <ruleref uri="#data_prepare" />
+        <tag>$.data_prepare=$data_prepare; $.constellation={}; $.constellation._value="Prepare";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>Chante</item>
+          <item>Chante moi</item>
+        </one-of>
+        <ruleref uri="#data_sing" />
+        <tag>$.data_sing=$data_sing; $.constellation={}; $.constellation._value="Sing";</tag>
+      </item>
+      <item>
+        <one-of>
+          <item>Non rien</item>
+          <item>Au revoir</item>
+        </one-of>
+        <tag>$.constellation={}; $.constellation._value="None";</tag>
+      </item>
+    </one-of>
+    <ruleref special="GARBAGE" />
+  </rule>
+  <rule id="data_type" scope="public">
+    <one-of>
+      <item>la température du GPU</item>
+      <item>la fête du jour</item>
+      <item>le pourcentage de ma batterie</item>
+    </one-of>
+  </rule>
+  <rule id="data_end" scope="public">
+    <one-of>
+      <item>mot Jarvis</item>
+    </one-of>
+  </rule>
+  <rule id="data_sing" scope="public">
+    <one-of>
+      <item>une chanson</item>
+      <item>chanson</item>
+    </one-of>
+  </rule>
+  <rule id="data_lock" scope="public">
+    <one-of>
+      <item>mon PC</item>
+      <item>mon ordinateur</item>
+    </one-of>
+  </rule>
+  <rule id="data_prepare" scope="public">
+    <one-of>
+      <item>le café</item>
+      <item>du café</item>
+    </one-of>
+  </rule>
+  <rule id="data_time" scope="public">
+    <one-of>
+      <item>se lève le soleil</item>
+      <item>se couche le soleil</item>
+    </one-of>
+  </rule>
+</grammar>
